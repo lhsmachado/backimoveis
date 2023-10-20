@@ -29,10 +29,20 @@
 
 ### 🔵 POST /auth
 - **Descrição**: Autenticação de usuário (se precisar...)
+- **Corpo da Requisição**
 ```javascript 
 {
 	"email": "gah@adm.com.br",
 	"password": "senha123"
+}
+```
+
+### 🟡 PATCH /properties/edit/id
+- **Descrição**: Edita um imóvel ja cadastrado
+- **Corpo da Requisição**
+```javascript 
+{
+	"titulo": "editando casa por id"
 }
 ```
 
