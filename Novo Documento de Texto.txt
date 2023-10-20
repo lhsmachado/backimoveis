@@ -1,0 +1,18 @@
+Requisitos ate 
+
+Check list feitos :
+Cadastro de usuário === OK
+Autenticação de usuário === OK
+middleware de token === 
+code precisa verificar se ja existe um igual
+adicionei tipo no schema, locação ou venda == OK
+campo de fotos ====
+
+
+
+filtro
+paginação
+cadastro de imovel
+painel adm
+unique no cadastro
+codigo do imovel pro painel de adm do corretor usar pra pesquisar
