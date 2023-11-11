@@ -1,6 +1,10 @@
 import { Model, NumberSchemaDefinition } from "mongoose";
 import { PropertieDocument } from "../Entities/PropertiesSchema";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 interface Filter {
   [key: string]: string;
 }
@@ -43,15 +47,20 @@ class PropertieRepository {
   }
 
   async FindAll(){
+<<<<<<< HEAD
     return await this.model.find().populate({
       path: 'fotos', 
       model: 'propertiesphotos',
       select: '-_id filename'})
       .select('-updatedAt -createdAt -__v')
+=======
+    return await this.model.find().select('-updatedAt -createdAt -__v')
+>>>>>>> master
   }
 
   async Filter(filter: Filter) {
     const caseInsensitiveFilter: CaseInsensitiveFilter = {};
+<<<<<<< HEAD
 
     for (const key in filter) {
       const filterValue = filter[key];
@@ -76,6 +85,26 @@ class PropertieRepository {
 
     return await this.model.find(caseInsensitiveFilter);
   }
+=======
+    for (const key in filter) {
+    const filterValue = filter[key];
+    if (Array.isArray(filterValue)) {
+    const values = filterValue.map(value => new RegExp(`^{value.replace(/[-/\^$*+?.()|[\]{}]/g, '\\$&')}$|^\d+$`, 'i'));
+    caseInsensitiveFilter[key] = {
+    $in: values,
+    };
+    } else {
+    caseInsensitiveFilter[key] = {
+    $regex: filterValue,
+    $options: 'i',
+    };
+    }
+    }
+    return await this.model.find(caseInsensitiveFilter).select('-__v')
+    }
+  
+  
+>>>>>>> master
 
   async FindByName(names: string | string[]) {
     if (!Array.isArray(names)) {
@@ -94,6 +123,14 @@ class PropertieRepository {
 }
 
 
+<<<<<<< HEAD
+=======
+async Pagination(limit: number, page: number){
+  return this.model.find().sort( { _id: 1 } ).skip(page > 0 ? ( ( page - 1 ) * limit ) : 0).limit(limit).select('-__v')
+}
+
+
+>>>>>>> master
 }
 
 

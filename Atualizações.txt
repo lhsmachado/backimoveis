@@ -1,0 +1,20 @@
+Requisitos ate 
+
+Check list feitos :
+=== OK Adicionado campo telefone no user e o booleano isADM pra caso criarmos painel adm. 
+=== OK Cadastro de usuário 
+=== OK Cadastro de imovel
+=== OK Unique no title
+=== OK Autenticação de usuário 
+=== OK middleware de token 
+=== OK code precisa ser unique 
+=== OK adicionei tipo no schema, locação ou venda 
+=== OK campo de fotos 
+=== OK Fotos salvas no firebase 
+
+Check list para adicionar :
+pesquisar por id 
+find all
+filtro
+paginação
+pesquisar por codigo do imovel

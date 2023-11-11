@@ -27,6 +27,10 @@ class PropertieController {
     }
 
     async FindAll(req: Request, res: Response) {
+<<<<<<< HEAD
+=======
+        
+>>>>>>> master
         try {
             const result = await this.service.FindAll();
             res.status(STATUS_CODE.OK).json({ result });
@@ -36,6 +40,33 @@ class PropertieController {
         }
     }
 
+<<<<<<< HEAD
+=======
+    async Filter(req: Request, res: Response) {
+        try {
+            // Tento pegar tudo da query e colocar em params
+            const params = req.query;
+            // Criar um objeto de filtro
+            const filter: { [key: string]: string } = {};
+            for (const key in params) {
+                filter[key] = params[key] as string;
+            }
+            // Filtrar as vagas
+            const results = await this.service.FilterFromService(filter);
+            if('error' in results && results.error){
+                return res.status(results.status).json(results);
+            }
+            // Retornar os resultados
+            res.status(STATUS_CODE.OK).json(results)
+
+        } catch (error: any) {
+            return res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({ error: 'Erro interno no servidor' });
+        }
+    }
+
+
+
+>>>>>>> master
     async Edit(req: Request, res: Response) {
         const id = req.params.id as string;
         const body = req.body
@@ -53,7 +84,18 @@ class PropertieController {
         }
     }
 
+<<<<<<< HEAD
 
+=======
+    async FilterPagination(req:Request, res: Response){
+        const { itensPage , page } = req.query
+        const convert = parseInt(itensPage as string);
+        const convert2 = parseInt(page as string);
+
+        const result = await this.service.Pagination(convert, convert2);
+        return res.status(STATUS_CODE.OK).json(result)  
+    }
+>>>>>>> master
 }
 
 export { PropertieController }
