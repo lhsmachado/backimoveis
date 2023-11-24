@@ -1,4 +1,4 @@
-import {app} from './Index'
+import { app } from "./index";
 
 const port = process.env.PORT;
 
