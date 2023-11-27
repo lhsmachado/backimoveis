@@ -27,10 +27,6 @@ class PropertieController {
     }
 
     async FindAll(req: Request, res: Response) {
-<<<<<<< HEAD
-=======
-        
->>>>>>> master
         try {
             const result = await this.service.FindAll();
             res.status(STATUS_CODE.OK).json({ result });
@@ -40,8 +36,6 @@ class PropertieController {
         }
     }
 
-<<<<<<< HEAD
-=======
     async Filter(req: Request, res: Response) {
         try {
             // Tento pegar tudo da query e colocar em params
@@ -66,7 +60,6 @@ class PropertieController {
 
 
 
->>>>>>> master
     async Edit(req: Request, res: Response) {
         const id = req.params.id as string;
         const body = req.body
@@ -84,9 +77,7 @@ class PropertieController {
         }
     }
 
-<<<<<<< HEAD
 
-=======
     async FilterPagination(req:Request, res: Response){
         const { itensPage , page } = req.query
         const convert = parseInt(itensPage as string);
@@ -95,7 +86,6 @@ class PropertieController {
         const result = await this.service.Pagination(convert, convert2);
         return res.status(STATUS_CODE.OK).json(result)  
     }
->>>>>>> master
 }
 
 export { PropertieController }

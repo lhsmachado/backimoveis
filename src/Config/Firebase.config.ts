@@ -1,14 +1,19 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAY7t4f9RmZdtwDFG6SZ60iF7TyoRJll0Q",
-  authDomain: "imobiliaria-82ef3.firebaseapp.com",
-  projectId: "imobiliaria-82ef3",
-  storageBucket: "imobiliaria-82ef3.appspot.com",
-  messagingSenderId: "944996238925",
-  appId: "1:944996238925:web:5327a10f2dc1297aa0fe04",
-  measurementId: "G-Z11PSVMPMX"
+  apiKey: "AIzaSyBrPCwgsOla_8f3Xu4PkArumQzVKLGuMos",
+  authDomain: "imoveis-28518.firebaseapp.com",
+  projectId: "imoveis-28518",
+  storageBucket: "imoveis-28518.appspot.com",
+  messagingSenderId: "125633909950",
+  appId: "1:125633909950:web:b288bf5452c252380b3aef",
+  measurementId: "G-P7GQJQJ6D4"
 };
 
 // Initialize Firebase

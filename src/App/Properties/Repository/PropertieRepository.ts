@@ -1,10 +1,6 @@
 import { Model, NumberSchemaDefinition } from "mongoose";
 import { PropertieDocument } from "../Entities/PropertiesSchema";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 interface Filter {
   [key: string]: string;
 }
@@ -47,45 +43,17 @@ class PropertieRepository {
   }
 
   async FindAll(){
-<<<<<<< HEAD
     return await this.model.find().populate({
       path: 'fotos', 
       model: 'propertiesphotos',
       select: '-_id filename'})
       .select('-updatedAt -createdAt -__v')
-=======
     return await this.model.find().select('-updatedAt -createdAt -__v')
->>>>>>> master
+
   }
 
   async Filter(filter: Filter) {
     const caseInsensitiveFilter: CaseInsensitiveFilter = {};
-<<<<<<< HEAD
-
-    for (const key in filter) {
-      const filterValue = filter[key];
-
-      if (key === "technology") {
-        // Array.isArray(filter[key]) verifica se o valor da chave key no filter é um array.
-        // Se for um array ele usa esse array
-        // Se for um valor apenas usa ele mas como array ainda sempre sera array
-        const technolodyNames = Array.isArray(filterValue) ? filterValue : [filterValue];
-
-        // $in: Este operador aceita um array e verifica se pelo menos um deles está em um objeto
-        caseInsensitiveFilter[key] = {
-          $in: technolodyNames.map(name => new RegExp(`^${name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}$`, 'i')),
-        };
-      } else {
-        caseInsensitiveFilter[key] = {
-          $regex: filterValue,
-          $options: 'i',
-        };
-      }
-    }
-
-    return await this.model.find(caseInsensitiveFilter);
-  }
-=======
     for (const key in filter) {
     const filterValue = filter[key];
     if (Array.isArray(filterValue)) {
@@ -102,9 +70,6 @@ class PropertieRepository {
     }
     return await this.model.find(caseInsensitiveFilter).select('-__v')
     }
-  
-  
->>>>>>> master
 
   async FindByName(names: string | string[]) {
     if (!Array.isArray(names)) {
@@ -123,14 +88,9 @@ class PropertieRepository {
 }
 
 
-<<<<<<< HEAD
-=======
 async Pagination(limit: number, page: number){
   return this.model.find().sort( { _id: 1 } ).skip(page > 0 ? ( ( page - 1 ) * limit ) : 0).limit(limit).select('-__v')
 }
-
-
->>>>>>> master
 }
 
 

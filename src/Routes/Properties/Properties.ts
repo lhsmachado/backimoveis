@@ -6,7 +6,7 @@ import multer, { diskStorage } from "multer"
 const PropertieRoute = Router();
 const controller = PropertieModule.getInstance();
 
-<<<<<<< HEAD
+
 const multerConfig = diskStorage({
     destination: (req, file, cb) => {
       cb(null, './src/photos')
@@ -17,19 +17,13 @@ const multerConfig = diskStorage({
       cb(null, formattedFilename)
     },
   })
-  const upload = multer({ storage: multerConfig })
-=======
-
 const upload = multer({ storage: multer.memoryStorage() });
->>>>>>> master
+
 
 
 PropertieRoute.post("/", upload.array("files", 10), controller.Create.bind(controller));
 PropertieRoute.get("/", controller.FindAll.bind(controller));
-<<<<<<< HEAD
-=======
 PropertieRoute.get("/query", controller.FilterPagination.bind(controller));
->>>>>>> master
 PropertieRoute.patch("/edit/:id", controller.Edit.bind(controller));
 
 
