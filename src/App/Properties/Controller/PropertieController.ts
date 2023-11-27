@@ -8,7 +8,7 @@ class PropertieController {
 
     async Create(req: Request, res: Response) {
         const { body, files } = req
-
+        console.log('files na console',files)
         const BodyVerify = await PropertieValidation.Verify(body);
         if (BodyVerify.error) {
             return res.status(BodyVerify.status).json(BodyVerify.error);
