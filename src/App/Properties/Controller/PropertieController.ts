@@ -8,7 +8,7 @@ class PropertieController {
 
     async Create(req: Request, res: Response) {
         const { body, files } = req
-
+        console.log('files na console',files)
         const BodyVerify = await PropertieValidation.Verify(body);
         if (BodyVerify.error) {
             return res.status(BodyVerify.status).json(BodyVerify.error);
@@ -27,7 +27,6 @@ class PropertieController {
     }
 
     async FindAll(req: Request, res: Response) {
-        
         try {
             const result = await this.service.FindAll();
             res.status(STATUS_CODE.OK).json({ result });
@@ -77,6 +76,7 @@ class PropertieController {
             return res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({ error: 'Erro interno no servidor' });
         }
     }
+
 
     async FilterPagination(req:Request, res: Response){
         const { itensPage , page } = req.query

@@ -9,7 +9,7 @@ const PropertieSchema = new Schema({
     metros2: { type: String, defaul: 0 },
     descricao: { type: String, required: true },
     suite: { type: String, default: 0 },
-    quartos: {type: String, default: 1},
+    quartos: {type: String, required: true, default: 1},
     vagagaragem: {type: String, default: 0},
     banheiros: { type: String, default: 1},
     valorCondominio: { type: String, default: null},

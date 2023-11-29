@@ -7,6 +7,16 @@ const PropertieRoute = Router();
 const controller = PropertieModule.getInstance();
 
 
+const multerConfig = diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, './src/photos')
+    },
+    filename: (req, file, cb) => {
+      const [filename, extension] = file.originalname.split(".")
+      const formattedFilename = `${filename}-${Date.now()}.${extension}`
+      cb(null, formattedFilename)
+    },
+  })
 const upload = multer({ storage: multer.memoryStorage() });
 
 

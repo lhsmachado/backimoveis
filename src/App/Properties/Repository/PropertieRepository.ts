@@ -1,7 +1,6 @@
 import { Model, NumberSchemaDefinition } from "mongoose";
 import { PropertieDocument } from "../Entities/PropertiesSchema";
 
-
 interface Filter {
   [key: string]: string;
 }
@@ -44,7 +43,13 @@ class PropertieRepository {
   }
 
   async FindAll(){
+    return await this.model.find().populate({
+      path: 'fotos', 
+      model: 'propertiesphotos',
+      select: '-_id filename'})
+      .select('-updatedAt -createdAt -__v')
     return await this.model.find().select('-updatedAt -createdAt -__v')
+
   }
 
   async Filter(filter: Filter) {
@@ -65,8 +70,6 @@ class PropertieRepository {
     }
     return await this.model.find(caseInsensitiveFilter).select('-__v')
     }
-  
-  
 
   async FindByName(names: string | string[]) {
     if (!Array.isArray(names)) {
@@ -88,8 +91,6 @@ class PropertieRepository {
 async Pagination(limit: number, page: number){
   return this.model.find().sort( { _id: 1 } ).skip(page > 0 ? ( ( page - 1 ) * limit ) : 0).limit(limit).select('-__v')
 }
-
-
 }
 
 

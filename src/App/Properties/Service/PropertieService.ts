@@ -27,6 +27,7 @@ interface CreatePropertieDto {
   IPTU: number | null;
   precoAluguel: number | null;
   precoVenda: number | null;
+  fotos: string[];
   files: {
     filename: string;
     mimetype: string;
