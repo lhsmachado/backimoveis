@@ -9,10 +9,12 @@ class PropertieController {
     async Create(req: Request, res: Response) {
         const { body, files } = req
         console.log('files na console',files)
-        const BodyVerify = await PropertieValidation.Verify(body);
-        if (BodyVerify.error) {
-            return res.status(BodyVerify.status).json(BodyVerify.error);
-        }
+        console.log()
+        // const BodyVerify = await PropertieValidation.Verify(body);
+        // console.log(BodyVerify)
+        // if (BodyVerify.error) {
+        //     return res.status(BodyVerify.status).json(BodyVerify.error);
+        // }
 
         try {
             const Properties = await this.service.CreatePropertie({
@@ -80,9 +82,10 @@ class PropertieController {
 
     async FilterPagination(req:Request, res: Response){
         const { itensPage , page } = req.query
-        const convert = parseInt(itensPage as string);
-        const convert2 = parseInt(page as string);
 
+        const convert = parseInt(itensPage as string);
+
+        const convert2 = parseInt(page as string);
         const result = await this.service.Pagination(convert, convert2);
         return res.status(STATUS_CODE.OK).json(result)  
     }

@@ -24,7 +24,7 @@ PropertieRoute.post("/", upload.array("files", 10), controller.Create.bind(contr
 PropertieRoute.get("/", controller.FindAll.bind(controller));
 PropertieRoute.get("/query", controller.FilterPagination.bind(controller));
 PropertieRoute.patch("/edit/:id", controller.Edit.bind(controller));
-
+PropertieRoute.get("/search", controller.Filter.bind(controller));
 
 
 export {PropertieRoute }

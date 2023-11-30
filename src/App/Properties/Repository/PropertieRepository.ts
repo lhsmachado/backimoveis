@@ -43,11 +43,11 @@ class PropertieRepository {
   }
 
   async FindAll(){
-    return await this.model.find().populate({
-      path: 'fotos', 
-      model: 'propertiesphotos',
-      select: '-_id filename'})
-      .select('-updatedAt -createdAt -__v')
+    // return await this.model.find().populate({
+    //   path: 'fotos', 
+    //   model: 'propertiesphotos',
+    //   select: '-_id filename'})
+    //   .select('-updatedAt -createdAt -__v')
     return await this.model.find().select('-updatedAt -createdAt -__v')
 
   }
