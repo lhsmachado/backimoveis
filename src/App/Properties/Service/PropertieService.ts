@@ -98,6 +98,13 @@ class PropertieService {
     return await this.repository.FindAll();
   }
 
+async Find(params:any){
+  const code = params.id
+  console.log(code)
+  return await this.repository.FindByCode(code)
+
+}
+
 
   async FilterFromService(filter: Filter) {
     console.log('query chegada na service', filter);

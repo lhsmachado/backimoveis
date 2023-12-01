@@ -60,6 +60,17 @@ class PropertieController {
         }
     }
 
+    async Find (req: Request, res:Response){
+
+        try{
+            const params = req.query
+            const result = await this.service.Find(params)
+            return res.status(STATUS_CODE.OK).json(result)
+
+        } catch (error: any) {
+            return res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({ error: 'Erro interno no servidor' });
+        }
+    }
 
 
     async Edit(req: Request, res: Response) {

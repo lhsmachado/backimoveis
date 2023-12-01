@@ -38,8 +38,8 @@ class PropertieRepository {
     return await this.model.find();
   }
 
-  async FindByCode(code: number) {
-    return await this.model.find
+  async FindByCode(id: string) {
+    return await this.model.findById(id)
   }
 
   async FindAll(){

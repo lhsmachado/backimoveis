@@ -22,6 +22,7 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 PropertieRoute.post("/", upload.array("files", 10), controller.Create.bind(controller));
 PropertieRoute.get("/", controller.FindAll.bind(controller));
+PropertieRoute.get("/detail", controller.Find.bind(controller));
 PropertieRoute.get("/query", controller.FilterPagination.bind(controller));
 PropertieRoute.patch("/edit/:id", controller.Edit.bind(controller));
 PropertieRoute.get("/search", controller.Filter.bind(controller));
