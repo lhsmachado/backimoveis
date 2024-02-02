@@ -5,13 +5,13 @@ interface Filter {
   [key: string]: string;
 }
 
-type CaseInsensitiveFilter = {
-  [key: string]: {
-    $regex: string;
-    $options: string;
-  } | {
-    $in: RegExp[];
-  }
+interface CaseInsensitiveFilter {
+  [key: string]:
+    | { $regex: string; $options: string }
+    | { $in: (string | RegExp)[] }
+    | number
+    | string
+    | null;
 }
 
 
@@ -56,7 +56,19 @@ class PropertieRepository {
     const caseInsensitiveFilter: CaseInsensitiveFilter = {};
     for (const key in filter) {
     const filterValue = filter[key];
-    if (Array.isArray(filterValue)) {
+    if (key === 'preco') {
+      caseInsensitiveFilter[key] = filterValue;
+    } else if
+    (key === 'metros2') {
+      caseInsensitiveFilter[key] = filterValue;
+    } else if
+    (key === 'vagagaragem') {
+      caseInsensitiveFilter[key] = filterValue;
+    }else if
+    (key === 'quartos') {
+      caseInsensitiveFilter[key] = filterValue;
+    }
+    else if (Array.isArray(filterValue)) {
     const values = filterValue.map(value => new RegExp(`^{value.replace(/[-/\^$*+?.()|[\]{}]/g, '\\$&')}$|^\d+$`, 'i'));
     caseInsensitiveFilter[key] = {
     $in: values,

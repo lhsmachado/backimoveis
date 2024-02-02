@@ -108,8 +108,22 @@ async Find(params:any){
 
   async FilterFromService(filter: Filter) {
     console.log('query chegada na service', filter);
+    const query:any = {}
+    if(filter.modelo) query.modelo = filter.modelo
+    if(filter.tipo) query.tipo = filter.tipo
+    if(filter.cidade) query.cidade = filter.cidade
+    if(filter.bairro) query.bairro = filter.bairro
+    if(filter.vaga) query.vagagaragem = {$gte: filter.vaga}
+    if(filter.quartos) query.quartos = {$gte: filter.quartos}
+    if(filter.minvalue) query.preco = {$gte: filter.minvalue}
+    if(filter.maxvalue != '0' ) query.preco = {...query.preco, $lte: filter.maxvalue}
+    if(filter.minmetros2 ) query.metros2 = {$gte: filter.minmetros2}
+    if(filter.maxmetros2 != '0' ) query.metros2 = {...query.metros2, $lte: filter.maxmetros2}
+    
+    console.log(query)
+
     try {
-      const Result = await this.repository.Filter(filter);
+      const Result = await this.repository.Filter(query);
       if(Result.length === 0){
         return {result: 'Nenhuma propriedade encontrada'}
       }

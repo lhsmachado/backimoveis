@@ -46,8 +46,8 @@ class PropertieController {
             const filter: { [key: string]: string } = {};
             for (const key in params) {
                 filter[key] = params[key] as string;
+                console.log()
             }
-            // Filtrar as vagas
             const results = await this.service.FilterFromService(filter);
             if('error' in results && results.error){
                 return res.status(results.status).json(results);
